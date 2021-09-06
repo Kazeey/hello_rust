@@ -8,3 +8,4 @@ author = "Kazeey"
 
 [dependencies]
 ferris-says = "0.2"
+rand = "0.8.3"

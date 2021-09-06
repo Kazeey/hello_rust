@@ -3,14 +3,23 @@ use std::io::{ stdout, BufWriter, stdin };
 
 fn main() 
 {
-    ferris_says("Maxime");
+    ferris_says();
     guessing_game();
 }
 
-fn ferris_says(name: &str)
+fn ferris_says()
 {
-    let mut out = String::from("Salut");
-    out.push_str(name);
+    let mut name = String::new();
+
+    println!("Enter the player's name :");
+
+    stdin()
+    .read_line(&mut name)
+    .expect("Erreur");
+
+    let mut out = String::from("Salut ");
+    out.push_str(&name.to_string());
+    
     let width = 24;
 
     let mut writer = BufWriter::new(stdout());

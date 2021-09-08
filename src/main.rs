@@ -84,7 +84,10 @@ fn ferris_says()
 /// .read_line(&mut guess)
 /// .expect("Erreur");
 ///
-/// let guess : u32 = guess.trim().parse().expect("Please type a number !");
+/// let guess : u32 = match guess.trim().parse() {
+///     Ok(num) => num,
+///     Err(_) => continue
+/// };
 /// ```
 /// 
 /// # The guess
@@ -95,32 +98,43 @@ fn ferris_says()
 /// ```
 /// match guess.cmp(&secret_number) 
 /// {
-///     Ordering::Less => println!("Too small"),
-///     Ordering::Equal => println!("You win !"),
-///     Ordering::Greater => println!("Too big")
+///    Ordering::Less => println!("Too small"),
+///    Ordering::Equal => {
+///        println!("You win !");
+///        break;
+///    },
+///    Ordering::Greater => println!("Too big")
 /// }
 /// ```
 fn guessing_game()
 {
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
-    println!("{}", secret_number);
-    println!("Guess the number\nEnter your number");
+    println!("The secret number is : {}", secret_number);
 
-    let mut guess = String::new();
-    
-    stdin()
-    .read_line(&mut guess)
-    .expect("Erreur");
-
-    let guess : u32 = guess.trim().parse().expect("Please type a number !");
-
-    println!("{}", guess);
-
-    match guess.cmp(&secret_number) 
+    loop 
     {
-        Ordering::Less => println!("Too small"),
-        Ordering::Equal => println!("You win !"),
-        Ordering::Greater => println!("Too big")
+        println!("Guess the number");
+
+        let mut guess = String::new();
+        
+        stdin()
+        .read_line(&mut guess)
+        .expect("Erreur");
+
+        let guess : u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue
+        };
+    
+        match guess.cmp(&secret_number) 
+        {
+            Ordering::Less => println!("Too small"),
+            Ordering::Equal => {
+                println!("You win !");
+                break;
+            },
+            Ordering::Greater => println!("Too big")
+        }
     }
 }

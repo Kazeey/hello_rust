@@ -7,5 +7,5 @@ author = "Kazeey"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-ferris-says = "0.2"
+ferris-says = "0.3.1"
 rand = "0.8.3"

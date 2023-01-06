@@ -1,5 +1,5 @@
-
-
+use rand::Rng;
+use std::{cmp::Ordering, io::stdin};
 
 /// "I count gates and numbers, then play the guessing game"
 /// 
@@ -42,7 +42,7 @@
 ///    Ordering::Greater => println!("Too big")
 /// }
 /// ```
-fn guessing_game()
+pub fn guessing_game()
 {
     let secret_number = rand::thread_rng().gen_range(1..=100);
 

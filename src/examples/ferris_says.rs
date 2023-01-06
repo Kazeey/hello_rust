@@ -1,3 +1,6 @@
+use std::{io::stdin, io::stdout, io::BufWriter};
+use ferris_says::say;
+
 /// Give a name to ferris.
 ///
 /// So Ferris is a crate given in the book's exemple.

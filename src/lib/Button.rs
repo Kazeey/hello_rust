@@ -1,4 +1,4 @@
-use super::Screen::Draw;
+use super::screen::Draw;
 
 pub struct Button 
 {

@@ -1,13 +1,22 @@
 mod lib
 {
-    pub mod Screen;
-    pub mod Button;
+    pub mod screen;
+    pub mod button;
 }
 
-use lib::Button;
-use lib::Screen;
+mod examples 
+{
+    pub mod ferris_says;
+    pub mod boucle;
+    pub mod guessing_game;
+}
+
+use lib::button;
+use lib::screen;
+
 
 fn main() 
 {
-    Screen::Draw::draw(&Button::Button{width: 10, height: 10, label: String::from("Button")});
+    screen::Draw::draw(&button::Button{width: 10, height: 10, label: String::from("Button")});
+    examples::guessing_game::guessing_game();
 }
